@@ -25,6 +25,7 @@ app
         <v-list-item
           v-for="item in items"
           :key="item.title"
+          :to="item.to"
           link
         >
           <v-list-item-icon>
@@ -46,7 +47,7 @@ app
     </v-app-bar>
 
     <v-main>
-      <!--  -->
+      <router-view></router-view>
 
     </v-main>
   </v-app>
@@ -57,8 +58,8 @@ app
     data: () => ({ 
       drawer: null,
       items: [
-          { title: 'To Do', icon: 'mdi-view-dashboard' },
-          { title: 'About', icon: 'mdi-help-box' },
+          { title: 'To Do', icon: 'mdi-format-list-checks', to: '/'},
+          { title: 'About', icon: 'mdi-help-box', to: '/about'},
         ]
       }),
   }
