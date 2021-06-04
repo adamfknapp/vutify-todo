@@ -2,19 +2,24 @@
   <div >
 
 
-    <v-list
+    <v-list 
+      class="pt-0"
       flat
     >
 
-      <v-list-item
+      <div
        v-for = "task in tasks"
-       : key = "task.id"
+       :key = "task.id"
       >
-        <template v-slot:default="{ active, }">
+      <v-list-item 
+        @click="doneTask(task.id)"
+      >
+        <template>
           <v-list-item-action>
             <v-checkbox
-              :input-value="active"
+              :input-value="task.done"
               color="primary"
+
             ></v-checkbox>
           </v-list-item-action>
 
@@ -23,6 +28,8 @@
           </v-list-item-content>
         </template>
       </v-list-item>
+      <v-divider></v-divider>
+      </div>
 
     </v-list>
   </div>
@@ -36,17 +43,25 @@
         tasks: [
           {
             id: 1,
-            title: 'item 1'
+            title: 'item',
+            done: false          
           },
           {
             id: 2,
-            title: 'item 2' 
+            title: 'item',
+            done: false 
           },
           {
             id: 3,
-            title: 'item 3' 
+            title: 'item',
+            done: false 
           },
         ]
+      }
+    },
+    methods: {
+      doneTask(id){
+        console.log('id: ', id)
       }
     }
   }
